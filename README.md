@@ -22,6 +22,8 @@ export OPENAI_API_KEY=sk-...                 # (or the matching provider key)
 # local model instead of a cloud one:
 #   export AGENT_MODEL=ollama_chat/qwen2.5-coder:7b
 #   export AGENT_MODEL_BASE=http://localhost:11434
+# (with Ollama, also raise its context window: num_ctx=8192 in LiteLLMModel —
+#  the default 2048 is too small for agentic loops)
 
 uv run python agent.py
 ```
