@@ -4,8 +4,8 @@ Same seed, same log. The story baked into the data:
 
 - `/api/export` is the slow endpoint (report exports: 2-6s per call)
 - `/api/reports` throws a burst of 503s from 14:00 to 15:00 on day one
-  (a retry storm against an exhausted connection pool — same family of
-  incident as the Kafka cache article on this blog)
+  (think retries piling onto an exhausted connection pool; durations
+  cluster around a 30s timeout)
 - everything else is boring: fast, mostly 200s, a background hum of 404s
 
 Run:  uv run python gen_logs.py   (writes data/access_log.csv, ~4,000 rows)

@@ -6,14 +6,16 @@ register step — type hints plus this docstring are the whole contract.
 Note the return type: a list of dicts, not a file path. The LocalPythonExecutor
 sandbox blocks open() by design — data reaches the agent through tool return
 values, which are passed into the sandbox as real Python objects (no
-serialization round-trip, nothing extra burned on context).
+serialization round-trip, and the rows themselves never enter the prompt;
+only what the generated code prints does).
 """
 
 import csv
+from pathlib import Path
 
 from smolagents import tool
 
-LOG_PATH = "data/access_log.csv"
+LOG_PATH = Path(__file__).parent / "data" / "access_log.csv"
 
 
 def _load():
